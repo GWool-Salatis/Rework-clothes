@@ -199,12 +199,11 @@ local function giveSubClassLoadout(ply, subClass)
     local randFace = face_list[math.random(#face_list)]
     local randHelmet = helmet_list[math.random(#helmet_list)]
 
-    if randVest ~= "" then ply.armors["torso"] = randVest end
-    if randHelmet ~= "" then ply.armors["head"] = randHelmet end
-    if randFace ~= "" then ply.armors["face"] = randFace end
+    if randVest ~= "" then hg.AddArmor(ply, randVest) end
+    if randHelmet ~= "" then hg.AddArmor(ply, randHelmet) end
+    if randFace ~= "" then hg.AddArmor(ply, randFace) end
 
     ply:SyncArmor()
-
 
     ply:Give("weapon_melee")
     ply:Give("weapon_walkie_talkie")
