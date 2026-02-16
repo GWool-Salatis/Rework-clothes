@@ -994,10 +994,10 @@ function hg.DoTPIK(ply, ent)
         local old = ply.segmentsr[2] and ((ply.segmentsr[2].Pos - ply.segmentsr[1].Pos):GetNormalized() * 2) or vector_origin
 
         local eyeang = -(-eyeang)
-        eyeang.p = eyeang.p * 0.5
+        eyeang.p = math.NormalizeAngle(eyeang.p) * 0.5
         ply.segmentsr[1] = {Pos = ply_r_upperarm_matrix:GetTranslation(), Len = limblength}
         ply.segmentsr[2] = {Pos = spinepos + eyeang:Right() * 25 - eyeang:Up() * 20 - eyeang:Forward() * 20, Len = limblength}
-        
+
         local tr = util.TraceLine({
             start = ply.segmentsr[1].Pos,
             endpos = ply.segmentsr[2].Pos,
@@ -1142,7 +1142,7 @@ function hg.DoTPIK(ply, ent)
     if ply.lerp_lh != 0 then
         local old = ply.segmentsl[2] and ((ply.segmentsl[2].Pos - ply.segmentsl[1].Pos):GetNormalized() * 2) or vector_origin
         local eyeang = -(-eyeang)
-        eyeang.p = eyeang.p * 0.5
+        eyeang.p = math.NormalizeAngle(eyeang.p) * 0.5
         ply.segmentsl[1] = {Pos = ply_l_upperarm_matrix:GetTranslation(), Len = limblength}
         ply.segmentsl[2] = {Pos = spinepos + eyeang:Right() * -25 - eyeang:Up() * 20, Len = limblength}
         
