@@ -103,7 +103,7 @@ hook.Add("HG.InputMouseApply", "fakeCameraAngles2", function(tbl)
 
 	angle.pitch = newAng.p
     angle.yaw = newAng.y
-    angle.roll = hg_oldfakecam:GetBool() and oldroll + newAng.r or newAng.r
+    angle.roll = hg_oldfakecam:GetBool() and oldroll + lean_lerp * 0.5 or newAng.r
 
 	if wep.IsResting and wep:IsResting() then
 		angle.roll = math.Clamp(angle.roll, -15, 15)
@@ -199,7 +199,7 @@ CalcView = function(ply, origin, angles, fov, znear, zfar)
 	local _, angEye = LocalToWorld(vector_origin, ot, vector_origin, att_Ang)
 	angEye:Normalize()
 	
-	angEye[3] = hg_oldfakecam:GetBool() and 0 or ply.fakeangles[3]
+	angEye[3] = hg_oldfakecam:GetBool() and 0 or (ply.fakeangles and ply.fakeangles[3] or 0)
 	--angEye = ang
 	--angEye = att_Ang
 
