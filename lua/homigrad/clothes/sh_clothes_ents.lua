@@ -342,16 +342,16 @@ local clothes = {
     overalls = {
         PrintName = "Overalls",
         Model = "models/props_junk/cardboard_box003a.mdl",
-        SlotOccupation = { [ZC_CLOTHES_SLOT_TORSO] = true },
+        SlotOccupation = { [ZC_CLOTHES_SLOT_TORSO] = true, [ZC_CLOTHES_SLOT_PANTS] = true },
         Male = {
             Model = "models/tnb/halflife2/male_overalls.mdl",
-            HideSubMaterails = {"models/humans/male/group01/players_sheet"},
+            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
         FeMale = {
             Model = "models/tnb/halflife2/female_overalls.mdl",
-            HideSubMaterails = {"models/humans/female/group01/players_sheet"},
+            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
@@ -560,13 +560,13 @@ local clothes = {
         },
         Male = {
             Model = "models/tnb/halflife2/cca/male_fullbody_hc.mdl",
-            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross"},
+            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
         FeMale = {
             Model = "models/tnb/halflife2/cca/female_fullbody_hc.mdl",
-            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross"},
+            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
@@ -582,13 +582,13 @@ local clothes = {
         },
         Male = {
             Model = "models/tnb/halflife2/cca/male_fullbody_sec.mdl",
-            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross"},
+            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
         FeMale = {
             Model = "models/tnb/halflife2/cca/female_fullbody_sec.mdl",
-            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross"},
+            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/pants", "distac/gloves/cross", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
@@ -601,13 +601,13 @@ local clothes = {
         SlotOccupation = { [ZC_CLOTHES_SLOT_TORSO] = true },
         Male = {
             Model = "models/tnb/halflife2/cca/male_torso_metropolice_overcoat.mdl",
-            HideSubMaterails = {"models/humans/male/group01/players_sheet"},
+            HideSubMaterails = {"models/humans/male/group01/players_sheet", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
         FeMale = {
             Model = "models/tnb/halflife2/cca/female_torso_metropolice_overcoat.mdl",
-            HideSubMaterails = {"models/humans/female/group01/players_sheet"},
+            HideSubMaterails = {"models/humans/female/group01/players_sheet", "distac/gloves/hands"},
             Skin = 0,
             Bodygroups = "0000000000000"
         },
