@@ -683,6 +683,8 @@ local muffedClasses = {
 	["headcrabzombie"] = true
 }
 
+local hg_heartbeat_volume = ConVarExists("hg_heartbeat_volume") and GetConVar("hg_heartbeat_volume") or CreateClientConVar("hg_heartbeat_volume", 1, true, nil, "heartbeat loudness", 0, 4)
+
 hook.Add("Player-Ragdoll think", "organism-think-client-blood", function(ply, ent, time)
 	--local ent = IsValid(ply.FakeRagdoll) and ply.FakeRagdoll or ply
 	--print(ply,ent,ply.organism.owner,ply.new_organism.owner)
@@ -784,7 +786,7 @@ hook.Add("Player-Ragdoll think", "organism-think-client-blood", function(ply, en
 	local owner = ent
 	
 	local beatsPerSecond = math.max(min(30 / math.max(org.pulse or 70,2), 4), 0.1) * (!hg_old_blood:GetBool() and 0.3 or 1)
-		
+	
 	if org.pulse and org.heartbeat > 30 and (org.lastpulse or 0) + (1 / math.Clamp(org.heartbeat, 1, 600)) * 60 < CurTime() then
 		org.lastpulse = CurTime()
 		local pulse = org.heartbeat or 0
@@ -796,15 +798,15 @@ hook.Add("Player-Ragdoll think", "organism-think-client-blood", function(ply, en
 		local cantcheck = org.CantCheckPulse
 		local checkingplayer = (IsValid(carryent) and carryent.organism == ply.organism and !cantcheck and checkpulsebones[carryent:GetBoneName(carryent:TranslateBoneToPhysBone(carrybone))])
 		
-		if dist < 64 * 64 and (ply == lply or checkingplayer) then
+		if dist < 64 * 64 and ((ply == lply and !checkingplayer) or checkingplayer) then
 			local vol = checkingplayer and 2 or ((pain > 60 and ply == lply) and 1 or (pulse > 200 and ((200 - 95) / 50 + 0.12 - (pulse - 200) / 1000) or pulse > 95 and (pulse - 95) / 50 + 0.12 or 0.12))
 			if not checkingplayer then
-				vol = math.Clamp(vol, 0, 0.7)
+				vol = math.Clamp(vol, 0, 0.7) * hg_heartbeat_volume:GetFloat()
 			end
 
 			--ply:EmitSound("heartbeat/heartbeat_single.wav", 55, 60, vol)
 			if ent:GetVelocity():LengthSqr() < 10 then
-				sound.Play("heartbeat/heartbeat_single.wav", ply:EyePos(), 55, 60, vol)
+				sound.Play("heartbeat/heartbeat_single.wav", ply:EyePos(), 55, 60, vol * 1.5)
 			else
 				EmitSound("heartbeat/heartbeat_single.wav", ply:EyePos(), ply:EntIndex(), CHAN_AUTO, vol, 55, nil, 60)
 			end
@@ -824,7 +826,7 @@ hook.Add("Player-Ragdoll think", "organism-think-client-blood", function(ply, en
 					muffed = ent.armors["face"] == "mask2" or ent.PlayerClassName == "Combine"
 				end
 				
-				if org.o2.curregen <= org.timeValue * 0.5 and org.o2[1] < 20 then
+				if org.timeValue and org.o2.curregen <= org.timeValue * 0.5 and org.o2[1] < 20 then
 					ply:EmitSound("zcitysnd/real_sonar/"..(ThatPlyIsFemale(ent) and "fe" or "").."male_wheeze"..math.random(5)..".mp3", 40, nil, nil, nil, nil, 1)
 				end
 			else
