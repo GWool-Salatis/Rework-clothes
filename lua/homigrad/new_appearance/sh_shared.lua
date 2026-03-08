@@ -113,6 +113,29 @@ AppAddModel("Male 07", "models/zcity/m/male_07.mdl", false, {
 	hands = "distac/gloves/hands"
 })
 
+AppAddModel("sadsalat", "models/dih/Salat.mdl", false, {
+	main = "models/humans/male/group01/players_sheet",
+	pants = "distac/gloves/pants",
+	boots = "distac/gloves/cross",
+	hands = "distac/gloves/hands"
+})
+
+AppAddModel("Mannytko", "models/salat/mannytko_salat_pm.mdl", false, {
+	main = "models/humans/male/group01/players_sheet",
+	pants = "distac/gloves/pants",
+	boots = "distac/gloves/cross",
+	hands = "distac/gloves/hands"
+})
+
+AppAddModel("sadsalat hallowen", "models/salat/sadsalat_hellowen_pm.mdl", false, {
+	main = "models/humans/male/group01/players_sheet",
+	pants = "distac/gloves/pants",
+	boots = "distac/gloves/cross",
+	hands = "distac/gloves/hands"
+})
+
+
+
 AppAddModel("Male 08", "models/zcity/m/male_08.mdl", false, {
 	main = "models/humans/male/group01/players_sheet",
 	pants = "distac/gloves/pants",
