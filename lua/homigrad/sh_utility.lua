@@ -1628,8 +1628,6 @@ local IsValid = IsValid
 		local wep = ply:GetActiveWeapon()
 		local vel = ply:GetVelocity()
 		local velLen = vel:Length()
-		local fm = cmd:GetForwardMove() * (org.brain and org.brain > 0.1 and math.sin(CurTime() / 2) or 1)
-		local sm = cmd:GetSideMove() * (org.brain and org.brain > 0.1 and math.sin(CurTime() / 2) or 1)
 
 		local slow_walking = ply:KeyDown(IN_WALK)
 		local aiming = ply:KeyDown(IN_ATTACK2) and wep and IsValid(wep) and ishgweapon(wep)
@@ -1734,6 +1732,9 @@ local IsValid = IsValid
 		if mul <= 0.01 then
 			mul = 0.01
 		end
+		
+		local fm = cmd:GetForwardMove() * (org.brain and org.brain > 0.1 and math.sin(CurTime() / 2) or 1)
+		local sm = cmd:GetSideMove() * (org.brain and org.brain > 0.1 and math.sin(CurTime() / 2) or 1)
 
 		mul = mul * (ply:GetNWBool("TauntStopMoving", false) and 0.01 or 1)
 
